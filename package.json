@@ -1,0 +1,18 @@
+{
+  "name": "purehtmlpopup",
+  "version": "1.0.0",
+  "description": "Simple Popup ",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "start": "npm run dev"
+  },
+  "author": "Arthur",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
+  }
+}
