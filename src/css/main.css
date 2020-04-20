@@ -9,6 +9,8 @@
 
 .popup {
   position: relative;
+  width: 100%;
+  height: 100vh;
   display: inline-block;
   cursor: pointer;
   -webkit-user-select: none;
@@ -19,17 +21,27 @@
 
 .popup-text {
   visibility: hidden;
-  width: 160px;
+  margin: 0 auto;
+  left: 50%;
+  top: 50%;
+  display: inline-block;
+  width: 50%;
+  height: 50vh;
   background-color: #555;
   color: #fff;
   text-align: center;
   border-radius: 6px;
   padding: 8px 0;
-  position: absolute;
+  position: fixed;
+  transform: translate(-50%, -50%);
   z-index: 1;
-  bottom: 125%;
-  left: 50%;
-  margin-left: -80px;
+}
+
+.popup-text .title {
+  display: block;
+}
+.popup-text .text {
+  display: block;
 }
 
 .show {

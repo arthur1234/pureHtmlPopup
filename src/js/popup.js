@@ -7,16 +7,15 @@ export default class Popup {
 
 
   initPopup = () => {
-
-    document.getElementById("popup").addEventListener("click", this.popupEvent);
-
+    generateElements.generatePopup();
+    this.callPopup.addEventListener("click", this.popupEvent);
   };
 
   popupEvent = () => {
 
-    const popup = document.getElementById("simplePopup");
-    popup.innerHTML = this.uppercaseTitle;
-
+    const popup = this.popupElement;
+    popup.children[0].innerHTML = this.uppercaseTitle;
+    popup.children[1].innerHTML = this.text;
     popup.classList.toggle("show");
 
   };
@@ -29,20 +28,46 @@ export default class Popup {
     }, null, 2)
   }
 
+  get callPopup() {
+    let el = document.getElementById("open-popup-btn");
+    return el;
+  }
+
+  get popupElement() {
+    let el = document.getElementById("simplePopup");
+    return el;
+  }
+
   get uppercaseTitle() {
     let value = this.title.toUpperCase();
-    console.log(value);
     return value;
   }
 }
 
 
+class generateElements {
+  static generatePopup() {
+    let container = document.createElement("dev");
+    let content = document.createElement('dev');
+    let title = document.createElement('dev');
+    let text = document.createElement('dev');
 
+    this.setAttributes(container, {"class": "popup"});
+    this.setAttributes(content, {"class": "popup-text", "id": "simplePopup"});
+    this.setAttributes(title, {"class": "title"});
+    this.setAttributes(text, {"class": "text"});
 
-class Util {
-  static id = Date.now();
+    content.innerHTML += title.outerHTML + text.outerHTML;
+    container.appendChild(content);
+    document.body.appendChild(container);
+  }
+
+  static setAttributes(el, attrs) {
+    for (let key in attrs) {
+      el.setAttribute(key, attrs[key]);
+    }
+  }
 }
 
-console.log('Util id: ', Util.id);
 
 
