@@ -1,3 +1,6 @@
+
+import {generateElements} from "./generateElement";
+
 export default class Popup {
   constructor(title, text) {
     this.title = title;
@@ -5,14 +8,12 @@ export default class Popup {
     this.date = new Date();
   }
 
-
   initPopup = () => {
-    generateElements.generatePopup();
     this.callPopup.addEventListener("click", this.popupEvent);
   };
 
   popupEvent = () => {
-
+    generateElements.generatePopup();
     const popup = this.popupElement;
     popup.children[0].innerHTML = this.uppercaseTitle;
     popup.children[1].innerHTML = this.text;
@@ -45,29 +46,7 @@ export default class Popup {
 }
 
 
-class generateElements {
-  static generatePopup() {
-    let container = document.createElement("dev");
-    let content = document.createElement('dev');
-    let title = document.createElement('dev');
-    let text = document.createElement('dev');
 
-    this.setAttributes(container, {"class": "popup"});
-    this.setAttributes(content, {"class": "popup-text", "id": "simplePopup"});
-    this.setAttributes(title, {"class": "title"});
-    this.setAttributes(text, {"class": "text"});
-
-    content.innerHTML += title.outerHTML + text.outerHTML;
-    container.appendChild(content);
-    document.body.appendChild(container);
-  }
-
-  static setAttributes(el, attrs) {
-    for (let key in attrs) {
-      el.setAttribute(key, attrs[key]);
-    }
-  }
-}
 
 
 
